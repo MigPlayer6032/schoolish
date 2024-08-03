@@ -4,9 +4,10 @@ Schoolish is an innovative platform designed to help teachers better organize th
 
 ## Features
 
-- **Schedule Management**: Organize and visualize your class schedules in a clear and intuitive way.
-- **Lesson Planning**: Plan your lessons in advance and keep everything organized.
-- **Centralization of Information**: Keep all important information about your classes in one place.
+- **Goodbye, papers scattered all over your desk:** With Schoolish, teachers can centralize all relevant information in one place. This includes schedules, lesson materials, student grades, and more. Goodbye, papers scattered all over your desk!
+- **Easy to prepare and efficient to execute:** The platform allows teachers to plan their lessons more effectively. They can create detailed schedules, set goals, and track student progress.
+- **Work from anywhere:** With the ability to access Schoolish from anywhere, teachers don’t need to be in-person at school to manage their classes. This is especially useful for those working in hybrid or distance learning.
+- **Protection for sensitive information:** Schoolish offers robust security to protect sensitive student data. Information is stored encrypted, giving teachers peace of mind and maintaining everyone’s privacy.
 
 ## Usage
 
