@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Schoolish
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Schoolish is an innovative platform designed to help teachers better organize their classes and groups. With Schoolish, you can manage schedules, plan lessons efficiently and keep all important information in one place. Simplify your school routine and have more time to focus on what really matters: teaching.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Schedule Management**: Organize and visualize your class schedules in a clear and intuitive way.
+- **Lesson Planning**: Plan your lessons in advance and keep everything organized.
+- **Centralization of Information**: Keep all important information about your classes in one place.
 
-## Expanding the ESLint configuration
+## Usage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Access [https://schoolish.vercel.app/](https://schoolish.vercel.app/) in your browser and create an account. We will not show you how to install it on your local machine here.
 
-- Configure the top-level `parserOptions` property like this:
+## Contribution
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Contributions are welcome! Follow the steps below to contribute:
+
+1. Fork the project.
+2. Create a new branch:
+```bash
+git checkout -b feat/my-new-feature
 ```
+3. Make your changes and commit:
+```bash
+git commit -m 'Add new feature'
+```
+4. Push your changes:
+```bash
+git push origin feat/my-new-feature
+```
+5. Open a Pull Request.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---
+
+**Simplify your school routine with Schoolish and have more time to focus on what really matters: teaching.** 

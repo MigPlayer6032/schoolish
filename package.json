@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://schoolish.vercel.app",
+  "license": "MIT",
+  "repository": "https://github.com/MigPlayer6032/schoolish",
+  "author": "Miguel Tibincoski",
   "scripts": {
     "dev": "cls && vite",
     "build": "tsc -b && vite build",
