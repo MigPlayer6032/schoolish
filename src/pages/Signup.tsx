@@ -53,6 +53,15 @@ function Page() {
             updateProfile(auth.currentUser, {
               displayName,
             });
+
+            sendEmailVerification(auth.currentUser).then(() => {
+              setAlertMessage({
+                ref: alertMessageBox,
+                type: "info",
+                message:
+                  "Enviamos um e-mail de verificação para você. Verifique sua caixa de entrada e <i>span</i>.",
+              });
+            });
           }
         })
 
