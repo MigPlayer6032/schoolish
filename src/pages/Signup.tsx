@@ -118,13 +118,13 @@ function Page() {
             />
           </div>
           <button className="submit-btn" type="submit">
-            Entrar
+            Cadastrar
           </button>
         </form>
         <div className="login slide-up">
           <div className="center">
             <h2 className="form-title" id="login">
-              ou <strong>cadastre-se</strong>
+              ou <strong>faça login</strong>
             </h2>
           </div>
         </div>
