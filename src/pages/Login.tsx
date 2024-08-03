@@ -192,7 +192,7 @@ const Login = styled.main`
         text-align: center;
 
         span {
-          color: color: #fff;;
+          color: #fff;
           opacity: 0;
           visibility: hidden;
           -webkit-transition: all 0.3s ease;
