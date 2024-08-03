@@ -100,7 +100,7 @@ function Page() {
         <div className="login slide-up">
           <div className="center">
             <h2 className="form-title" id="login">
-              ou <strong>cadastre-se</strong>
+              ou <strong onClick={() => window.location.href = "/signup"}>cadastre-se</strong>
             </h2>
           </div>
         </div>

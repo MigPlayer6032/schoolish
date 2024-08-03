@@ -124,7 +124,7 @@ function Page() {
         <div className="login slide-up">
           <div className="center">
             <h2 className="form-title" id="login">
-              ou <strong>faça login</strong>
+              ou <strong onClick={() => window.location.href = "/login"}>faça login</strong>
             </h2>
           </div>
         </div>
