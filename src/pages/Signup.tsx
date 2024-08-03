@@ -50,7 +50,9 @@ function Page() {
       await createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
           if (auth.currentUser) {
-            setIsLogged(true);
+            updateProfile(auth.currentUser, {
+              displayName,
+            });
           }
         })
 
