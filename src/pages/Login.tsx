@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 import {
   signInWithEmailAndPassword,
   setPersistence,
@@ -6,13 +6,17 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { Navigate } from "react-router-dom";
-import { auth } from "../services/firebase";
 import styled from "styled-components";
 
+import { auth, errors } from "../services/firebase";
+import colors from "../styles/colors";
+import setAlertMessage from "../utils/setAlertMessage";
+
 function Page() {
-  const [email, setEmail] = useState("email");
-  const [password, setPassword] = useState("senha");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLogged, setIsLogged] = useState(false);
+  const alertMessageBox = useRef(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -31,7 +35,11 @@ function Page() {
     e.preventDefault();
 
     if (!email || !password) {
-      alert("Preencha todos os campos!");
+      setAlertMessage({
+        ref: alertMessageBox,
+        type: "info",
+        message: "Preencha todos os campos.",
+      });
       return;
     }
 
@@ -41,13 +49,17 @@ function Page() {
           setIsLogged(true);
         })
         .catch((error) => {
-          if (error.message.includes("auth/invalid-credential")) {
-            alert("Credenciais inválidas!");
-          } else if (error.message.includes("auth/user-not-found")) {
-            alert("Usuário não encontrado!");
-          } else {
-            alert(error.message);
-          }
+          const errorCode = String(error.message)
+            .replace("Firebase: Error (", "")
+            .replace(").", "");
+          const errorMessage =
+            errors.auth[errorCode as keyof typeof errors.auth] ||
+            "Erro desconhecido. Tente novamente mais tarde ou <a href=''>atualize a página</a>.";
+            setAlertMessage({
+              ref: alertMessageBox,
+              type: "warning",
+              message: errorMessage,
+            });
         });
     });
   }
@@ -56,51 +68,41 @@ function Page() {
     <Login>
       {isLogged && <Navigate to="/dashboard" replace={true} />}
       <div className="form-structor">
-        <div className="signup">
-          <h2 className="form-title" id="signup">
-            <span>or</span>Sign up
+        <form className="signup" onSubmit={onLogin}>
+          <h2
+            className="form-title"
+            id="signup"
+            style={{ fontWeight: "bolder", marginBottom: "20px" }}
+          >
+            Seja bem-vindo!
           </h2>
+          <div className="alertMessageBox" ref={alertMessageBox}></div>
           <div className="form-holder">
             <input
               type="email"
               className="input"
-              placeholder="Email"
+              placeholder="E-mail"
               onInput={(e) => setEmail(e.currentTarget.value)}
               value={email}
             />
             <input
               type="password"
               className="input"
-              placeholder="Password"
+              placeholder="Senha"
               onInput={(e) => setPassword(e.currentTarget.value)}
               value={password}
             />
           </div>
-          <button className="submit-btn">Sign up</button>
-        </div>
+          <button className="submit-btn" type="submit">
+            Entrar
+          </button>
+        </form>
         <div className="login slide-up">
-          <form className="center" onSubmit={onLogin}>
+          <div className="center">
             <h2 className="form-title" id="login">
-              <span>or</span>Log in
+              ou <strong>cadastre-se</strong>
             </h2>
-            <div className="form-holder">
-              <input
-                type="email"
-                className="input"
-                placeholder="Email"
-                onInput={(e) => setEmail(e.currentTarget.value)}
-                value={email}
-              />
-              <input
-                type="password"
-                className="input"
-                placeholder="Password"
-                onInput={(e) => setPassword(e.currentTarget.value)}
-                value={password}
-              />
-            </div>
-            <button className="submit-btn">Log in</button>
-          </form>
+          </div>
         </div>
       </div>
     </Login>
@@ -110,26 +112,40 @@ function Page() {
 export default Page;
 
 const Login = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e3e3e3;
+
   .form-structor {
     background-color: #222;
     border-radius: 15px;
-    height: 550px;
-    width: 350px;
+    height: 650px;
+    width: 450px;
     position: relative;
     overflow: hidden;
 
+    @media (max-width: 600px) {
+      height: 100vh;
+      width: 100vw;
+      border-radius: 0px;
+    }
+
+
     &::after {
       content: "";
-      opacity: 0.8;
+      opacity: 0.5;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       background-repeat: no-repeat;
-      background-position: left bottom;
-      background-size: 500px;
-      background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100");
+      background-position: center;
+      background-size: 1000px;
+      background-image: url("https://images.unsplash.com/photo-1554042317-efd62f19bc95?q=80&w=1982&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     }
 
     .signup {
@@ -176,7 +192,7 @@ const Login = styled.main`
         text-align: center;
 
         span {
-          color: rgba(0, 0, 0, 0.4);
+          color: color: #fff;;
           opacity: 0;
           visibility: hidden;
           -webkit-transition: all 0.3s ease;
@@ -186,7 +202,7 @@ const Login = styled.main`
 
       .form-holder {
         border-radius: 15px;
-        background-color: #fff;
+        background-color: ${colors.mainColor};
         overflow: hidden;
         margin-top: 50px;
         opacity: 1;
@@ -199,7 +215,7 @@ const Login = styled.main`
           outline: none;
           box-shadow: none;
           display: block;
-          height: 30px;
+          height: 50px;
           line-height: 30px;
           padding: 8px 15px;
           border-bottom: 1px solid #eee;
@@ -216,8 +232,8 @@ const Login = styled.main`
       }
 
       .submit-btn {
-        background-color: rgba(0, 0, 0, 0.4);
-        color: rgba(256, 256, 256, 0.7);
+        background-color: ${colors.mainColor};
+        color: white;
         border: 0;
         border-radius: 15px;
         display: block;
@@ -225,7 +241,7 @@ const Login = styled.main`
         padding: 15px 45px;
         width: 100%;
         font-size: 13px;
-        font-weight: bold;
+        font-weight: bolder;
         cursor: pointer;
         opacity: 1;
         visibility: visible;
@@ -234,7 +250,7 @@ const Login = styled.main`
 
         &:hover {
           transition: all 0.3s ease;
-          background-color: rgba(0, 0, 0, 0.8);
+          background-color: ${colors.secondaryColor};
         }
       }
     }
@@ -250,6 +266,10 @@ const Login = styled.main`
       transition: all 0.3s ease;
       -webkit-transition: all 0.3s ease;
 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       &::before {
         content: "";
         position: absolute;
@@ -257,13 +277,14 @@ const Login = styled.main`
         top: -20px;
         -webkit-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
-        background-color: #fff;
+        background-color: ${colors.mainColor};
         width: 200%;
         height: 250px;
         border-radius: 50%;
         z-index: 4;
         transition: all 0.3s ease;
         -webkit-transition: all 0.3s ease;
+
       }
 
       .center {
@@ -278,12 +299,12 @@ const Login = styled.main`
         -webkit-transition: all 0.3s ease;
 
         .form-title {
-          color: #000;
+          color: #fff;
           font-size: 1.7em;
           text-align: center;
 
           span {
-            color: rgba(0, 0, 0, 0.4);
+            color: #fff;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -293,7 +314,7 @@ const Login = styled.main`
 
         .form-holder {
           border-radius: 15px;
-          background-color: #fff;
+          background-color: ${colors.mainColorLight};
           border: 1px solid #eee;
           overflow: hidden;
           margin-top: 50px;
@@ -325,7 +346,7 @@ const Login = styled.main`
 
         .submit-btn {
           background-color: #6b92a4;
-          color: rgba(256, 256, 256, 0.7);
+          color: white;
           border: 0;
           border-radius: 15px;
           display: block;
@@ -333,7 +354,7 @@ const Login = styled.main`
           padding: 15px 45px;
           width: 100%;
           font-size: 13px;
-          font-weight: bold;
+          font-weight: bolder;
           cursor: pointer;
           opacity: 1;
           visibility: visible;

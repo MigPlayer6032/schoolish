@@ -14,9 +14,9 @@ export default function setAlertMessage(data: {
           : data.type === "info"
           ? "alert-info"
           : "alert-success"
-      } alert d-flex align-items-center fade show" role="alert">
+      } alert d-flex align-items-center fade show" role="alert" style="justify-content: space-between;">
       ${data.message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"style="margin-left: 5px;"></button>
     </div>
     `;
 }
