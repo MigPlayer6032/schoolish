@@ -1,8 +1,28 @@
+import { useEffect, useMemo } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import Cookies from "universal-cookie";
 
 import colors from "../styles/colors";
+import { languages } from "../services/i18n";
 
 export default function Footer() {
+  const cookies = useMemo(() => new Cookies(), []);
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    if (
+      cookies.get("schoolish-language") &&
+      languages
+        .map(({ code }) => code)
+        .includes(cookies.get("schoolish-language"))
+    ) {
+      i18n.changeLanguage(cookies.get("schoolish-language"));
+    } else {
+      cookies.set("schoolish-language", i18n.language);
+    }
+  }, [cookies, i18n]);
+
   return (
     <>
       <Footer_Component>
@@ -63,11 +83,29 @@ export default function Footer() {
           color: "white",
           textAlign: "center",
           width: "100vw",
-          padding: "15px"
+          padding: "15px",
         }}
       >
-        <select className="country">🇧🇷 Brasil</select>
-        <select className="language">Português (Brasil)</select>
+        <select
+          defaultValue={
+            cookies.get("schoolish-language") &&
+            languages
+              .map(({ code }) => code)
+              .includes(cookies.get("schoolish-language"))
+              ? cookies.get("schoolish-language")
+              : i18n.language
+          }
+          onChange={(e) => {
+            i18n.changeLanguage(e.target.value);
+            cookies.set("schoolish-language", e.target.value);
+          }}
+        >
+          {languages.map(({ code, label }) => (
+            <option key={code} value={code}>
+              {label}
+            </option>
+          ))}
+        </select>
       </div>
     </>
   );

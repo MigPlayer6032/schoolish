@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import "./styles/firebaseEmulatorWarning.css";
 import Loading from "./components/Loading";
 
+import "./services/i18n";
+
 ReactDOM.createRoot(
   document.getElementById("root") ?? document.createElement("div")
 ).render(

@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { TypeAnimation } from "react-type-animation";
+import { useTranslation } from "react-i18next";
 
 import Navbar from "../components/Navbar";
 import Space from "../components/Space";
 import HomeBlock from "../components/HomeBlock";
 import Footer from "../components/Footer";
 
-import Colors from "../styles/colors.tsx"
+import Colors from "../styles/colors.tsx";
 
 function Page() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Navbar />
@@ -44,16 +47,10 @@ function Page() {
           </div>
           <Space height="25px" />
           <h3 style={{ fontWeight: "normal" }}>
-            Conheça o Schoolish, a nova plataforma projetada para ajudar
-            professores a se organizarem melhor em suas aulas e turmas. Com o
-            Schoolish, você pode gerenciar horários, planejar lições de maneira
-            eficiente e manter todas as informações importantes em um só lugar.
-            Simplifique sua rotina escolar e tenha mais tempo para focar no que
-            realmente importa:{" "}
+            {t("home-page-meet-schoolish")}{" "}
             <span style={{ fontWeight: "bolder", textDecoration: "underline" }}>
-              ensinar
-            </span>
-            .
+              {t("teaching")}
+            </span>.
           </h3>
           <Space height="25px" />
           <div
@@ -75,7 +72,7 @@ function Page() {
                 fontWeight: "bold",
                 cursor: "pointer",
                 fontSize: "16px",
-                backgroundColor: Colors.mainColor
+                backgroundColor: Colors.mainColor,
               }}
               className="signupButton"
               onClick={() => {
@@ -92,7 +89,7 @@ function Page() {
                 fontSize: "16px",
                 textDecoration: "underline",
                 color: Colors.mainColor,
-                textAlign: "center"
+                textAlign: "center",
               }}
               onClick={() => {
                 document
@@ -214,13 +211,12 @@ function Page() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            borderColor: "#000000"
+            borderColor: "#000000",
           }}
-          onClick={() => 
-            window.location.href = "/why_schoolish"
-          }
+          onClick={() => (window.location.href = "/why_schoolish")}
         >
-          Saiba como o Schoolish pode te ajudar na vida escolar <div className="arrow arrow-right"></div>
+          Saiba como o Schoolish pode te ajudar na vida escolar{" "}
+          <div className="arrow arrow-right"></div>
         </span>
         <Space height="25px" />
         <button
@@ -235,7 +231,7 @@ function Page() {
             cursor: "pointer",
             fontSize: "16px",
             margin: "0 auto",
-            backgroundColor: `${Colors.mainColor}`
+            backgroundColor: `${Colors.mainColor}`,
           }}
           className="signupButton"
           onClick={() => {
