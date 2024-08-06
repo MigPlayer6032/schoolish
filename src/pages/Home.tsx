@@ -21,23 +21,20 @@ function Page() {
           <div className="typingContainer" style={{ display: "flex" }}>
             <TypeAnimation
               sequence={[
-                "Organize suas aulas com facilidade!",
+                t("Organize your classes with ease!"),
                 1000,
 
-                "Organize suas turma de qualquer",
-
-                "Organize suas turmas de quaquer",
-
-                "Organize suas turmas de qualquer lugar!",
+                t("Organize your classes from anywhere!"),
                 1000,
 
-                "Organize sua agenda com rapidez!",
+                t("Organize your schedule quickly!"),
                 1000,
 
-                "Organize sua rotina escolar com o Scholish!",
-                200,
-                "Organize sua rotina escolar com o Schoolish!",
+                t("Organize your school routine with Schoolish!"),
                 2500,
+
+                "",
+                500,
               ]}
               wrapper="h1"
               speed={75}
@@ -47,10 +44,13 @@ function Page() {
           </div>
           <Space height="25px" />
           <h3 style={{ fontWeight: "normal" }}>
-            {t("home-page-meet-schoolish")}{" "}
+            {t(
+              "Meet Schoolish, the new platform designed to help teachers better organize their classes and groups. With Schoolish, you can manage schedules, plan lessons efficiently and keep all important information in one place. Simplify your school routine and have more time to focus on what really matters:"
+            )}{" "}
             <span style={{ fontWeight: "bolder", textDecoration: "underline" }}>
               {t("teaching")}
-            </span>.
+            </span>
+            .
           </h3>
           <Space height="25px" />
           <div
@@ -79,7 +79,7 @@ function Page() {
                 window.location.href = "/signup";
               }}
             >
-              Crie uma conta grátis
+              {t("Create a free account")}
             </button>
             <span
               style={{
@@ -97,7 +97,7 @@ function Page() {
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Por que Schoolish?
+              {t("Why Schoolish?")}
             </span>
           </div>
         </div>
@@ -114,17 +114,17 @@ function Page() {
       >
         <HomeBlock
           title={{
-            text: "Adeus, papéis espalhados pela mesa!",
+            text: t("Bye bye, papers scattered across the table!"),
             color: "#000",
             weight: "bold",
           }}
           subtitle={{
-            text: "Organização",
+            text: t("Organization"),
             color: "#a200ff",
             weight: "bold",
           }}
           text={{
-            text: "Com o Schoolish, os professores podem centralizar todas as informações relevantes em um só lugar. Isso inclui horários, materiais de aula, notas dos alunos e muito mais. Adeus, papéis espalhados pela mesa!",
+            text: t("With Schoolish, teachers can centralize all relevant information in one place. This includes schedules, class materials, student grades, and more. No more papers scattered across your desk!"),
             color: "#000",
             weight: "normal",
           }}
@@ -136,17 +136,17 @@ function Page() {
         <Space height="50px" />
         <HomeBlock
           title={{
-            text: "Facilidade na preparação e eficiência na execução!",
+            text: t("Easy preparation and efficient execution!"),
             color: "#000",
             weight: "bold",
           }}
           subtitle={{
-            text: "Planejamento",
+            text: t("Planning"),
             color: "#a200ff",
             weight: "bold",
           }}
           text={{
-            text: "A plataforma permite que os professores planejem suas lições de forma mais eficaz. Eles podem criar cronogramas detalhados, definir metas e acompanhar o progresso dos alunos.",
+            text: t("Our platform enables teachers to plan their lessons more effectively. They can create detailed schedules, set goals, and track student progress."),
             color: "#000",
             weight: "normal",
           }}
@@ -158,17 +158,17 @@ function Page() {
         <Space height="50px" />
         <HomeBlock
           title={{
-            text: "Trabalhe de qualquer lugar!",
+            text: t("Work from anywhere!"),
             color: "#000",
             weight: "bold",
           }}
           subtitle={{
-            text: "Acesso Remoto:",
+            text: t("Remote access"),
             color: "#a200ff",
             weight: "bold",
           }}
           text={{
-            text: "Com a possibilidade de acessar o Schoolish de qualquer lugar, os professores não precisam estar presencialmente na escola para gerenciar suas turmas. Isso é especialmente útil para quem trabalha com ensino híbrido ou à distância.",
+            text: t("With the ability to access Schoolish from anywhere, teachers don’t need to be in-person to manage their classes. This is especially helpful for those working in hybrid or remote learning."),
             color: "#000",
             weight: "normal",
           }}
@@ -180,17 +180,17 @@ function Page() {
         <Space height="50px" />
         <HomeBlock
           title={{
-            text: "Proteção para informações confidenciais!",
+            text: t("Protection for confidential information!"),
             color: "#000",
             weight: "bold",
           }}
           subtitle={{
-            text: "Segurança dos Dados",
+            text: t("Data Security"),
             color: "#a200ff",
             weight: "bold",
           }}
           text={{
-            text: "O Schoolish oferece segurança robusta para proteger dados sensíveis dos alunos. As informações são armazenadas de forma criptografada, garantindo tranquilidade aos professores e mantendo a privacidade de todos.",
+            text: t("Schoolish offers robust security to protect sensitive student data. Information is stored in encrypted form, giving teachers peace of mind and keeping everyone private."),
             color: "#000",
             weight: "normal",
           }}
@@ -215,7 +215,7 @@ function Page() {
           }}
           onClick={() => (window.location.href = "/why_schoolish")}
         >
-          Saiba como o Schoolish pode te ajudar na vida escolar{" "}
+          {t("Find out how Schoolish can help you in your school life")}{" "}
           <div className="arrow arrow-right"></div>
         </span>
         <Space height="25px" />
@@ -238,7 +238,7 @@ function Page() {
             window.location.href = "/signup";
           }}
         >
-          Crie uma conta grátis
+          {t("Create a free account")}
         </button>
         <Space height="50px" />
       </section>
