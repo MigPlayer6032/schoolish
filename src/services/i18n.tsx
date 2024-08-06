@@ -46,4 +46,12 @@ export default i18n;
 export const languages = [
   { label: "English", code: "en" },
   { label: "Português (Brasil)", code: "ptbr" },
-];
+  { label: "Italiano", code: "it" },
+  { label: "हिंदी", code: "hi" },
+  { label: "Español", code: "es" },
+  { label: "Français", code: "fr" },
+  { label: "বাংলা", code: "bn" },
+  { label: "Русский", code: "ru" },
+].sort((a, b) => {
+  return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+});
