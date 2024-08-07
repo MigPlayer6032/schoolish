@@ -25,7 +25,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.0",
     "react-router-dom": "^6.24.1",
-    "react-type-animation": "^3.2.0",
+    "react-typed": "^2.0.12",
     "styled-components": "^6.1.11",
     "typeit-react": "^2.7.1",
     "universal-cookie": "^7.2.0"

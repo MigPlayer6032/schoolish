@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TypeAnimation } from "react-type-animation";
+import { ReactTyped } from "react-typed";
 import { useTranslation } from "react-i18next";
 
 import Navbar from "../components/Navbar";
@@ -19,27 +19,18 @@ function Page() {
       <Overview>
         <div>
           <div className="typingContainer" style={{ display: "flex" }}>
-            <TypeAnimation
-              sequence={[
+            <ReactTyped
+              strings={[
                 t("Organize your classes with ease!"),
-                1000,
-
                 t("Organize your classes from anywhere!"),
-                1000,
-
                 t("Organize your schedule quickly!"),
-                1000,
-
                 t("Organize your school routine with Schoolish!"),
-                2500,
-
-                "",
-                500,
               ]}
-              wrapper="h1"
-              speed={75}
-              repeat={Infinity}
-              cursor={true}
+              typeSpeed={100}
+              loop
+              backSpeed={20}
+              showCursor={true}
+              style={{ fontSize: "35px", fontWeight: "bolder" }}
             />
           </div>
           <Space height="25px" />
@@ -124,7 +115,9 @@ function Page() {
             weight: "bold",
           }}
           text={{
-            text: t("With Schoolish, teachers can centralize all relevant information in one place. This includes schedules, class materials, student grades, and more. No more papers scattered across your desk!"),
+            text: t(
+              "With Schoolish, teachers can centralize all relevant information in one place. This includes schedules, class materials, student grades, and more. No more papers scattered across your desk!"
+            ),
             color: "#000",
             weight: "normal",
           }}
@@ -146,7 +139,9 @@ function Page() {
             weight: "bold",
           }}
           text={{
-            text: t("Our platform enables teachers to plan their lessons more effectively. They can create detailed schedules, set goals, and track student progress."),
+            text: t(
+              "Our platform enables teachers to plan their lessons more effectively. They can create detailed schedules, set goals, and track student progress."
+            ),
             color: "#000",
             weight: "normal",
           }}
@@ -168,7 +163,9 @@ function Page() {
             weight: "bold",
           }}
           text={{
-            text: t("With the ability to access Schoolish from anywhere, teachers don’t need to be in-person to manage their classes. This is especially helpful for those working in hybrid or remote learning."),
+            text: t(
+              "With the ability to access Schoolish from anywhere, teachers don’t need to be in-person to manage their classes. This is especially helpful for those working in hybrid or remote learning."
+            ),
             color: "#000",
             weight: "normal",
           }}
@@ -190,7 +187,9 @@ function Page() {
             weight: "bold",
           }}
           text={{
-            text: t("Schoolish offers robust security to protect sensitive student data. Information is stored in encrypted form, giving teachers peace of mind and keeping everyone private."),
+            text: t(
+              "Schoolish offers robust security to protect sensitive student data. Information is stored in encrypted form, giving teachers peace of mind and keeping everyone private."
+            ),
             color: "#000",
             weight: "normal",
           }}
