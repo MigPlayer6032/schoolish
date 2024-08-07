@@ -26,7 +26,7 @@ function Page() {
                 t("Organize your schedule quickly!"),
                 t("Organize your school routine with Schoolish!"),
               ]}
-              typeSpeed={100}
+              typeSpeed={20}
               loop
               backSpeed={20}
               showCursor={true}
