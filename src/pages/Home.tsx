@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import Space from "../components/Space";
 import HomeBlock from "../components/HomeBlock";
 import Footer from "../components/Footer";
+import AdsInFeed from "../components/ads/in-feed";
 
 import Colors from "../styles/colors.tsx";
 
@@ -241,7 +242,8 @@ function Page() {
         </button>
         <Space height="50px" />
       </section>
-      <Footer />
+      <AdsInFeed />
+      <Footer />  
     </>
   );
 }
